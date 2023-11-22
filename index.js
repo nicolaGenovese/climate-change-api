@@ -55,7 +55,7 @@ app.get('/news', (req, res)=>{
     res.json(articles)
 })
 
-app.get('/news:newspaperId', (req, res)=>{
+app.get('/news/:newspaperId', (req, res)=>{
     const newspaperId = req.params.newspaperId
 
     const newspaperAddress = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].address
@@ -68,7 +68,7 @@ app.get('/news:newspaperId', (req, res)=>{
             const $ = cheerio.load(html)
             const specificArticles = []
 
-            $('a:contains("cliamte")', html).each(function () {
+            $('a:contains("climate")', html).each(function () {
                 const title = $(this).text
                 const url = $(this).attr('href')
                 specificArticles.push({
